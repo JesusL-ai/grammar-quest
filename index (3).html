@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Grammar Quest is an original interactive EFL learning adventure for Zero Conditional and First Conditional.">
+<title>Grammar Quest — The School of the Future</title>
+<style>
+:root{
+ --ink:#17213c;--muted:#5d6b87;--paper:#f6f8ff;--white:#fff;--line:#dfe6f5;
+ --navy:#202b55;--blue:#4f6df5;--cyan:#38c8d8;--violet:#8b5cf6;--mint:#a7f3d0;
+ --gold:#ffd166;--coral:#ff7b83;--shadow:0 18px 45px #24376615;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{width:min(1160px,92vw);margin:auto}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.nav{min-height:76px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:950;letter-spacing:-.03em}
+.logo{height:45px;width:45px;border-radius:15px;background:linear-gradient(135deg,var(--blue),var(--violet));display:grid;place-items:center;color:white;font-size:24px;box-shadow:0 8px 18px #4f6df544}
+.brand small{display:block;font-size:.69rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.navright{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+.stat{border:1px solid var(--line);background:#f7f9ff;border-radius:999px;padding:8px 12px;font-weight:850;font-size:.87rem}
+.btn{border:0;border-radius:13px;padding:12px 17px;font-weight:900;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px #273b701f}
+.primary{background:linear-gradient(105deg,var(--blue),var(--violet));color:#fff}
+.secondary{background:#eef2ff;color:#263b82;border:1px solid #d9e0ff}
+.whitebtn{background:white;color:var(--navy)}
+.small{padding:8px 12px;font-size:.88rem}
+main{padding:30px 0 60px}
+.hero{border-radius:30px;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr;background:linear-gradient(120deg,#202b55,#334a94 62%,#7656cb);color:white;box-shadow:var(--shadow)}
+.herotext{padding:clamp(25px,5vw,55px);position:relative;z-index:1}
+.eyebrow{font-size:.75rem;font-weight:950;letter-spacing:.16em;text-transform:uppercase;color:#42d4de}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);line-height:.98;letter-spacing:-.065em;margin:16px 0}
+.hero h1 span{color:#a9f3e5}
+.hero p{color:#e0e7ff;max-width:570px}
+.heroart{min-height:330px;position:relative;overflow:hidden;background:radial-gradient(circle at 55% 40%,#8b9fff 0,#6177db 20%,#384a9a 45%,#28345f 76%)}
+.gridglow{position:absolute;inset:0;background-image:linear-gradient(#ffffff0b 1px,transparent 1px),linear-gradient(90deg,#ffffff0b 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(90deg,transparent,#000)}
+.planet{position:absolute;width:180px;height:180px;border-radius:50%;left:50%;top:45%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#a7f3d0,#68d8e9 45%,#967bff 85%);box-shadow:inset -20px -18px 35px #2c337c55,0 0 55px #a5f4fc77}
+.ring{position:absolute;width:280px;height:85px;border:9px solid #ffffffbb;border-left-color:#b8f5f0;border-bottom-color:#9da8ff;border-radius:50%;left:50%;top:48%;transform:translate(-50%,-50%) rotate(-22deg)}
+.float{position:absolute;background:#ffffffeb;color:#26345f;padding:10px 13px;border-radius:14px;font-weight:900;box-shadow:0 10px 25px #101c4d30}
+.f1{left:8%;top:18%}.f2{right:7%;top:25%}.f3{left:15%;bottom:17%}.f4{right:10%;bottom:13%}
+.herofoot{font-size:.83rem;color:#e4e9ff;margin-top:15px}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:30px 0 15px}
+h2{font-size:1.55rem;letter-spacing:-.035em;margin:3px 0 6px}
+.muted{color:var(--muted);font-size:.92rem}
+.learninggrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.learncard{background:white;border:1px solid var(--line);border-radius:22px;padding:23px;box-shadow:var(--shadow)}
+.learnhead{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.learnicon{width:46px;height:46px;border-radius:14px;background:#e6faff;display:grid;place-items:center;font-size:1.45rem}
+.learncard:nth-child(2) .learnicon{background:#f0eaff}
+.formula{font-size:1rem;font-weight:950;background:#f2f6ff;border:1px dashed #c8d4f1;border-radius:12px;padding:12px;margin:13px 0;color:#2c438e}
+.example{background:#f8fafc;border-left:4px solid var(--cyan);border-radius:0 10px 10px 0;padding:11px 13px;margin-top:9px}
+.learncard:nth-child(2) .example{border-left-color:var(--violet)}
+.tipline{font-size:.9rem;color:var(--muted)}
+.hub{display:grid;grid-template-columns:1fr 300px;gap:17px;margin-top:24px;align-items:start}
+.card{background:white;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow)}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.zone{border:1px solid var(--line);border-radius:16px;padding:17px;background:#fff;min-height:158px}
+.zone .emoji{font-size:1.7rem}.zone strong{display:block;margin:5px 0}
+.zone p{font-size:.85rem;color:var(--muted);margin:0}
+.zone.active{border-color:#8c9aff;background:#f4f5ff;box-shadow:inset 0 0 0 1px #8c9aff55}
+.zone.done{border-color:#70cba3;background:#f0fff7}
+.sidebox{background:linear-gradient(145deg,#eff5ff,#f8f3ff);border:1px solid #e0e5fb;border-radius:22px;padding:21px}
+.sidebox h3{margin:0 0 10px}.sidebox p{color:var(--muted);font-size:.91rem}
+.bar{height:10px;background:#e0e7f6;border-radius:999px;overflow:hidden;margin:12px 0}
+.barfill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet));transition:width .25s}
+.minirow{display:flex;justify-content:space-between;gap:10px;font-size:.85rem;font-weight:800}
+.textbtn{border:0;background:none;color:#4058c7;font-weight:900;text-decoration:underline;padding:0}
+.game{margin-top:24px}
+.gamehead{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.questionarea{margin-top:19px;background:linear-gradient(145deg,#f8faff,#fff);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,4vw,30px)}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{background:#eaf0ff;color:#324aa0;font-weight:900;font-size:.76rem;border-radius:8px;padding:5px 9px}
+.tag.formtag{background:#e3fbf7;color:#146b6d}
+.qtext{font-size:clamp(1.25rem,3vw,1.85rem);line-height:1.35;font-weight:900;letter-spacing:-.025em;margin:17px 0}
+.qinstruction{font-size:.93rem;color:var(--muted);margin-bottom:14px}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.answer{border:1px solid #d9e2f4;background:white;color:var(--ink);border-radius:13px;padding:14px;text-align:left;font-weight:750;min-height:60px}
+.answer:hover:not(:disabled){border-color:var(--blue);background:#f4f6ff}
+.answer.correct{border-color:#38a879;background:#e9fff4;color:#145a3e}
+.answer.wrong{border-color:#e26a78;background:#fff0f1;color:#8c2434}
+.answer:disabled{cursor:default}
+.feedback{display:none;margin-top:16px;padding:16px;border-radius:14px;background:#eff5ff;border:1px solid #dbe6ff}
+.feedback.show{display:block}.feedback.good{background:#edfff5;border-color:#a7e7c5}.feedback.bad{background:#fff3f4;border-color:#f2c0c5}
+.feedback strong{display:block;margin-bottom:5px}
+.feedback .teach{margin-top:8px;color:#394967}
+.gameactions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:17px}
+.hidden{display:none!important}
+.results{text-align:center;padding:32px 15px}
+.score{font-size:clamp(3.5rem,9vw,5.5rem);font-weight:1000;letter-spacing:-.07em;color:var(--blue);line-height:1.1}
+.awards{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+.award{padding:10px 13px;border-radius:12px;background:#fff6d8;border:1px solid #f5df93;font-weight:850}
+.helpgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.helpitem{padding:15px;border:1px solid var(--line);border-radius:15px;background:#fbfcff}
+.helpitem strong{display:block;margin-bottom:5px}
+details{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 15px;margin:9px 0}
+summary{font-weight:850;cursor:pointer}
+details p{margin:9px 0 0;color:var(--muted)}
+footer{border-top:1px solid var(--line);background:#fff;color:var(--muted);font-size:.86rem;padding:23px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.heroart{min-height:270px}.hub{grid-template-columns:1fr}.learninggrid{grid-template-columns:1fr}}
+@media(max-width:650px){.nav{align-items:flex-start;padding:12px 0}.navright{max-width:50%}.stat{font-size:.78rem;padding:7px 9px}.zones{grid-template-columns:1fr}.answers{grid-template-columns:1fr}.helpgrid{grid-template-columns:1fr}.sectionhead{align-items:flex-start;flex-direction:column}.heroart{min-height:235px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+ <div class="brand"><div class="logo" aria-hidden="true">✦</div><div>GRAMMAR QUEST<small>School of the Future</small></div></div>
+ <div class="navright"><div class="stat">⚡ <span id="xp">0</span> XP</div><div class="stat">🏅 <span id="rank">Recruit</span></div><button class="btn secondary small" id="helpTop">Need help?</button></div>
+</div></header>
+<main class="wrap">
+<section class="hero" id="hero">
+ <div class="herotext"><div class="eyebrow">An interactive English learning adventure</div><h1>Unlock the power of <span>conditionals.</span></h1>
+ <p>Welcome, recruit! The School of the Future needs your grammar skills. Learn the rules, explore examples, and complete missions about school life, science, and the world around you.</p>
+ <button class="btn whitebtn" id="begin">🚀 Start learning</button><div class="herofoot">30 questions · Helpful explanations · No account required</div></div>
+ <div class="heroart" aria-label="Illustration of a glowing futuristic planet"><div class="gridglow"></div><div class="ring"></div><div class="planet"></div><div class="float f1">ZERO</div><div class="float f2">FIRST</div><div class="float f3">+10 XP ✦</div><div class="float f4">LEVEL UP!</div></div>
+</section>
+
+<section id="learn">
+ <div class="sectionhead"><div><div class="eyebrow" style="color:var(--blue)">Learn before you play</div><h2>Your grammar toolkit</h2></div><p class="muted">Not sure about a rule? Start here, or open the help panel anytime.</p></div>
+ <div class="learninggrid">
+  <article class="learncard"><div class="learnhead"><div class="learnicon">🧪</div><div><h2>Zero Conditional</h2><div class="muted">Facts, rules, routines, and things that are generally true.</div></div></div>
+   <div class="formula">If + present simple, present simple</div>
+   <div class="example"><strong>If students practise, they improve.</strong><br><span class="tipline">This describes a general result, not just one future event.</span></div>
+   <div class="example"><strong>If you heat ice, it melts.</strong><br><span class="tipline">A scientific fact.</span></div>
+   <p class="tipline" style="margin:13px 0 0"><strong>Remember:</strong> Both clauses usually use the present simple.</p>
+  </article>
+  <article class="learncard"><div class="learnhead"><div class="learnicon">🔭</div><div><h2>First Conditional</h2><div class="muted">Realistic possibilities and their possible future results.</div></div></div>
+   <div class="formula">If + present simple, will + base verb</div>
+   <div class="example"><strong>If I study tonight, I will feel prepared tomorrow.</strong><br><span class="tipline">Studying is a possible action; feeling prepared is a possible result.</span></div>
+   <div class="example"><strong>If it rains, we will stay inside.</strong><br><span class="tipline">A possible future situation and plan.</span></div>
+   <p class="tipline" style="margin:13px 0 0"><strong>Remember:</strong> Usually, do not put <em>will</em> directly after <em>if</em>.</p>
+  </article>
+ </div>
+</section>
+
+<section class="hub" id="missionHub">
+ <div class="card"><div class="eyebrow" style="color:var(--blue)">Your journey</div><h2>Three training zones</h2><p class="muted">Work through each zone. Read the feedback after every answer to learn why it is correct.</p>
+  <div class="zones">
+   <article class="zone active" id="zone0"><div class="emoji">🧪</div><strong>01 · Rule Lab</strong><p>Questions 1–10<br>Learn facts, rules, and routines.</p></article>
+   <article class="zone" id="zone1"><div class="emoji">🔭</div><strong>02 · Future Forecast</strong><p>Questions 11–20<br>Predict possible future results.</p></article>
+   <article class="zone" id="zone2"><div class="emoji">🕵️</div><strong>03 · Grammar Detective</strong><p>Questions 21–30<br>Apply both forms and solve cases.</p></article>
+  </div>
+ </div>
+ <aside class="sidebox"><h3>📡 Mission control</h3><p id="sideMessage">Start with the grammar toolkit, then begin your quest when you're ready.</p><div class="minirow"><span>Quest progress</span><span><span id="doneCount">0</span>/30</span></div><div class="bar"><div class="barfill" id="sideBar"></div></div><div class="minirow"><span>Correct answers</span><span id="sideCorrect">0</span></div><button class="btn primary" style="width:100%;margin-top:17px" id="launch">Begin mission →</button><p style="font-size:.8rem;margin:12px 0 0">Tip: You can open “Need help?” whenever you need a reminder.</p></aside>
+</section>
+
+<section class="card game hidden" id="game">
+ <div class="gamehead"><div><div class="eyebrow" style="color:var(--blue)" id="zoneLabel">ZONE 01</div><h2 id="zoneTitle">Rule Lab</h2></div><div class="stat">Question <span id="qNum">1</span> of 30</div></div>
+ <div class="bar" role="progressbar" aria-label="Quest progress" aria-valuemin="0" aria-valuemax="30" aria-valuenow="0" id="progress"><div class="barfill" id="progressBar"></div></div>
+ <div class="questionarea"><div class="tags"><span class="tag formtag" id="formTag">ZERO CONDITIONAL</span><span class="tag" id="skillTag">Choose the answer</span></div>
+  <div class="qtext" id="qtext"></div><div class="qinstruction" id="qinstruction">Select the best answer. Then read the explanation.</div>
+  <div class="answers" id="answers"></div><div class="feedback" id="feedback" role="status"></div>
+  <div class="gameactions"><button class="btn secondary" id="hintBtn">💡 Give me a hint</button><button class="btn primary hidden" id="nextBtn">Next challenge →</button></div>
+ </div>
+</section>
+
+<section class="card game hidden" id="results"><div class="results"><div class="eyebrow" style="color:var(--blue)">Mission report</div><h2 id="resultTitle">Quest complete!</h2><div class="score"><span id="finalXP">0</span> XP</div><p id="resultMessage"></p><div class="awards" id="awards"></div><p id="resultStats"></p><button class="btn primary" id="playAgain">↻ Play again</button> <button class="btn secondary" id="reviewBtn">Review grammar toolkit</button></div></section>
+
+<section class="card hidden" id="helpPanel" style="margin-top:24px">
+ <div class="sectionhead" style="margin-top:0"><div><div class="eyebrow" style="color:var(--blue)">Help centre</div><h2>Questions? Start here.</h2></div><button class="btn secondary small" id="closeHelp">Close help ✕</button></div>
+ <div class="helpgrid">
+  <div class="helpitem"><strong>🧪 When do I use the Zero Conditional?</strong><p class="muted">Use it for general truths, scientific facts, rules, and routines. Example: “If students arrive late, they check in at reception.”</p></div>
+  <div class="helpitem"><strong>🔭 When do I use the First Conditional?</strong><p class="muted">Use it for a realistic future possibility and its possible result. Example: “If I revise tonight, I will do better tomorrow.”</p></div>
+  <div class="helpitem"><strong>🧩 Where does “will” go?</strong><p class="muted">In the First Conditional, use present simple after “if” and “will + base verb” in the result clause: “If she studies, she will improve.”</p></div>
+  <div class="helpitem"><strong>💬 Can I put the “if” clause second?</strong><p class="muted">Yes. “If you practise, you improve” and “You improve if you practise” are both correct. Usually, no comma is needed when the if-clause comes second.</p></div>
+ </div>
+ <h3 style="margin-top:22px">More questions</h3>
+ <details><summary>Can I use “when” instead of “if”?</summary><p>Sometimes. “When” often suggests that something is expected or certain; “if” presents a condition. For this activity, focus on the target patterns with “if.”</p></details>
+ <details><summary>Can I use “may” or “might” instead of “will”?</summary><p>Yes, other modal verbs can express possibility, but this game focuses on the common First Conditional pattern “if + present simple, will + base verb.”</p></details>
+ <details><summary>What happens if I choose the wrong answer?</summary><p>No problem! The correct option will be shown, and the feedback explains the grammar. You can use the explanation to improve before moving on.</p></details>
+ <details><summary>How do I earn XP?</summary><p>Every correct answer earns 10 XP. Your final rank depends on the number of correct answers. You can replay the quest to practise again.</p></details>
+ <button class="btn primary" id="helpBack" style="margin-top:15px">Back to my mission</button>
+</section>
+
+<section class="card" id="faq" style="margin-top:24px">
+ <div class="eyebrow" style="color:var(--blue)">Quick support</div><h2>Need a reminder?</h2><p class="muted">You do not have to know everything before you begin. Use these learning supports at any time.</p>
+ <button class="btn secondary" id="faqHelp">Open the help centre</button> <button class="btn secondary" id="showToolkit">Show grammar toolkit</button>
+</section>
+</main>
+<footer><div class="wrap"><span><strong>Grammar Quest</strong> · Original gamified EFL teaching tool</span><span>Learn the rule · Try the challenge · Understand the feedback</span></div></footer>
+<script>
+const questions=[
+{z:0,f:"Zero Conditional",s:"General truths",q:"If students _____ regularly, they usually remember more vocabulary.",o:["practise","will practise","practised","practising"],a:0,h:"Think about a repeated result, not a single future prediction.",e:"The sentence describes a general result. Use present simple in both clauses: If + present simple, present simple.",ex:"If students practise, they remember."},
+{z:0,f:"Zero Conditional",s:"School routines",q:"If a student is late, the teacher _____ the arrival time.",o:["will record","recorded","records","recording"],a:2,h:"Is this a regular school procedure or a prediction about one future event?",e:"This is a regular procedure, so use present simple in both clauses.",ex:"If a student is late, the teacher records the arrival time."},
+{z:0,f:"Zero Conditional",s:"Scientific facts",q:"If you _____ ice, it melts.",o:["will heat","heat","heated","heating"],a:1,h:"Scientific facts are generally expressed with the Zero Conditional.",e:"Use present simple in the if-clause and the result clause.",ex:"If you heat ice, it melts."},
+{z:0,f:"Zero Conditional",s:"General results",q:"If people don't get enough sleep, they often _____ tired.",o:["felt","will feel","feel","feeling"],a:2,h:"The word “often” suggests a general result.",e:"Use the present simple “feel” to describe what generally happens.",ex:"If people don't get enough sleep, they often feel tired."},
+{z:0,f:"Zero Conditional",s:"School rules",q:"Choose the sentence that describes a general school rule.",o:["If you will submit late work, you lose points.","If students don't bring their ID, they check in at reception.","If students didn't bring an ID, they will check in.","If students don't bring an ID, they will checked in."],a:1,h:"Look for present simple in both clauses.",e:"The sentence describes a repeated school procedure. Both clauses use the present simple.",ex:"If students don't bring their ID, they check in at reception."},
+{z:0,f:"Zero Conditional",s:"Complete the rule",q:"If water reaches 100°C at sea level, it _____.",o:["will boil","boils","boiled","boiling"],a:1,h:"This is a general scientific fact.",e:"General facts use the Zero Conditional: present simple + present simple.",ex:"If water reaches 100°C at sea level, it boils."},
+{z:0,f:"Zero Conditional",s:"Study habits",q:"If I take notes during a lesson, I usually _____ the information better.",o:["remember","will remember","remembered","remembering"],a:0,h:"“Usually” points to a habit or repeated result.",e:"Use present simple in both clauses to describe a usual result.",ex:"If I take notes, I remember the information better."},
+{z:0,f:"Zero Conditional",s:"Grammar check",q:"Which sentence uses the Zero Conditional correctly?",o:["If plants don't get water, they die.","If plants won't get water, they die.","If plants didn't get water, they die.","If plants don't get water, they will died."],a:0,h:"For a general truth, use present simple in both clauses.",e:"“Don't get” and “die” are both present simple forms.",ex:"If plants don't get water, they die."},
+{z:0,f:"Zero Conditional",s:"School routines",q:"If the school bell _____, students go to their next class.",o:["will ring","rang","rings","ringing"],a:2,h:"The sentence describes what regularly happens.",e:"Use “rings,” the present simple form for a singular subject.",ex:"If the school bell rings, students go to their next class."},
+{z:0,f:"Zero Conditional",s:"Choose the meaning",q:"“If you mix blue and yellow, you get green.” This sentence describes…",o:["a possible plan for tomorrow","a general result","an unreal situation","a past event"],a:1,h:"Does the sentence describe a fact or a future plan?",e:"The Zero Conditional expresses general truths and predictable results.",ex:"If you mix blue and yellow, you get green."},
+{z:1,f:"First Conditional",s:"Future plans",q:"If I finish my homework early, I _____ for the spelling test.",o:["practise","practised","will practise","would practise"],a:2,h:"This is a possible future situation and its result.",e:"Use present simple after “if” and will + base verb in the result clause.",ex:"If I finish my homework early, I will practise."},
+{z:1,f:"First Conditional",s:"School trip",q:"If it rains during the school trip, we _____ the outdoor activity.",o:["cancelled","cancel","will cancel","cancelling"],a:2,h:"Imagine a possible situation in the future.",e:"Use “will cancel” for the possible future result.",ex:"If it rains, we will cancel the outdoor activity."},
+{z:1,f:"First Conditional",s:"Study goals",q:"If Maya studies tonight, she _____ more confident tomorrow.",o:["feels","felt","will feel","would feel"],a:2,h:"“Tomorrow” signals a future result.",e:"The First Conditional uses will + base verb in the result clause.",ex:"If Maya studies tonight, she will feel more confident tomorrow."},
+{z:1,f:"First Conditional",s:"Choose the correct form",q:"Which sentence is grammatically correct?",o:["If we will work together, we finish the project.","If we work together, we will finish the project.","If we worked together, we will finish the project.","If we work together, we finished the project."],a:1,h:"Remember: do not normally use “will” in the if-clause.",e:"Present simple follows “if”; “will + finish” expresses the possible future result.",ex:"If we work together, we will finish the project."},
+{z:1,f:"First Conditional",s:"School event",q:"If our team wins the science fair, we _____ our project at assembly.",o:["presented","present","will present","would presented"],a:2,h:"Winning the fair is a possible future event.",e:"Use “will present” to describe the possible result.",ex:"If our team wins, we will present our project."},
+{z:1,f:"First Conditional",s:"Make a plan",q:"If you don't understand the instructions, I _____ you.",o:["helped","will help","help","would helping"],a:1,h:"This is an offer to help in a possible future situation.",e:"The if-clause uses present simple; the result clause uses will + base verb.",ex:"If you don't understand, I will help you."},
+{z:1,f:"First Conditional",s:"Environmental action",q:"If our class recycles more paper, we _____ waste.",o:["reduced","reduce","will reduce","would reduced"],a:2,h:"The class is considering a possible future action.",e:"“Will reduce” gives the possible future result.",ex:"If our class recycles more paper, we will reduce waste."},
+{z:1,f:"First Conditional",s:"Grammar detective",q:"Find the correct sentence.",o:["If she will leave now, she catches the bus.","If she leaves now, she will catch the bus.","If she left now, she will catch the bus.","If she leaves now, she caught the bus."],a:1,h:"Present simple after “if”; will + base verb for the future result.",e:"“Leaves” is present simple and “will catch” is the future result.",ex:"If she leaves now, she will catch the bus."},
+{z:1,f:"First Conditional",s:"School preparation",q:"If we revise for the exam, we _____ better prepared.",o:["are","were","will be","would been"],a:2,h:"Choose the form that describes a possible future result.",e:"Use “will be” in the result clause of the First Conditional.",ex:"If we revise, we will be better prepared."},
+{z:1,f:"First Conditional",s:"Possible consequence",q:"If Leo doesn't leave now, he _____ the school bus.",o:["misses","missed","will miss","would miss"],a:2,h:"This is a prediction about a specific future situation.",e:"Use “will miss” to show the possible future consequence.",ex:"If Leo doesn't leave now, he will miss the school bus."},
+{z:2,f:"Mixed challenge",s:"Choose the conditional",q:"If you mix blue and yellow paint, you _____ green.",o:["will get","got","get","would get"],a:2,h:"Is this a general fact or a future possibility?",e:"This is a general result, so use the Zero Conditional.",ex:"If you mix blue and yellow paint, you get green."},
+{z:2,f:"Mixed challenge",s:"Choose the conditional",q:"If Ana doesn't leave now, she _____ the school bus.",o:["misses","missed","will miss","would miss"],a:2,h:"This is a possible future consequence of an action now.",e:"The First Conditional expresses this possible future result.",ex:"If Ana doesn't leave now, she will miss the school bus."},
+{z:2,f:"Grammar detective",s:"Correct the error",q:"Choose the sentence with the correct conditional structure.",o:["If students will revise, they get better results.","If students revise, they will get better results.","If students revised, they will get better results.","If students revise, they got better results."],a:1,h:"Which option uses present simple after “if” and will + verb for a possible future result?",e:"This is a First Conditional sentence: if + present simple, will + base verb.",ex:"If students revise, they will get better results."},
+{z:2,f:"Mixed challenge",s:"Understand the meaning",q:"“If our class recycles paper, we will reduce waste.” What does this express?",o:["A scientific fact that is always true","A possible future result of an action","A past habit","An impossible situation"],a:1,h:"Look at “will reduce.” What kind of result does it signal?",e:"The sentence describes a possible future result, so it uses the First Conditional.",ex:"If our class recycles paper, we will reduce waste."},
+{z:2,f:"Sentence completion",s:"Choose the correct form",q:"If students _____ questions when they need help, they usually learn more.",o:["will ask","asked","ask","asking"],a:2,h:"“Usually” signals a general pattern.",e:"Use the Zero Conditional for a general result: present simple in both clauses.",ex:"If students ask questions, they usually learn more."},
+{z:2,f:"Real-life situation",s:"Choose the conditional",q:"If the weather is sunny tomorrow, our class _____ outside.",o:["studies","studied","will study","would study"],a:2,h:"“Tomorrow” and a possible weather condition point to a future possibility.",e:"Use the First Conditional to describe a possible plan for tomorrow.",ex:"If the weather is sunny tomorrow, our class will study outside."},
+{z:2,f:"Word order",s:"Build the sentence",q:"Choose the correct sentence.",o:["If you will practise, you improve.","You will improve if you practise.","You improve if you will practise.","If you practised, you will improve."],a:1,h:"The if-clause can come second. Check which verb form follows “if.”",e:"This First Conditional sentence has “will improve” in the result clause and present simple after “if.”",ex:"You will improve if you practise."},
+{z:2,f:"Final case",s:"Choose the best explanation",q:"Which statement about conditionals is correct?",o:["Both conditionals always use “will” in both clauses.","Zero Conditional describes general results; First Conditional describes possible future results.","First Conditional is only used for scientific facts.","The word “if” must always begin the sentence."],a:1,h:"Think about the difference between general truths and realistic future possibilities.",e:"Zero Conditional is used for facts and general results. First Conditional is used for realistic future possibilities and their results.",ex:"Zero: If you heat ice, it melts. First: If I study, I will pass."},
+{z:2,f:"Final case",s:"Apply the rule",q:"A teacher says: “If you submit your project by Friday, I _____ it before the presentation.”",o:["check","checked","will check","would checked"],a:2,h:"The teacher is describing a possible future action.",e:"The First Conditional uses present simple after “if” and will + base verb for the result.",ex:"If you submit your project by Friday, I will check it before the presentation."},
+{z:2,f:"Final case",s:"Explain the difference",q:"Which sentence expresses a general routine rather than a specific future possibility?",o:["If I finish early today, I will help you.","If students ask for feedback, teachers give advice.","If it rains tomorrow, we will stay inside.","If she studies tonight, she will feel ready."],a:1,h:"Look for a sentence that describes what generally happens.",e:"This sentence describes a regular pattern, so it uses the Zero Conditional.",ex:"If students ask for feedback, teachers give advice."}
+];
+const $=id=>document.getElementById(id);
+let order=[],pos=0,xp=0,correct=0,answered=false,history=[];
+function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function updateStats(){ $("xp").textContent=xp;$("rank").textContent=xp>=250?"Grammar Legend":xp>=180?"Grammar Hero":xp>=100?"Rising Star":"Recruit";$("doneCount").textContent=pos;$("sideCorrect").textContent=correct;$("sideBar").style.width=(pos/30*100)+"%";}
+function openHelp(){ $("helpPanel").classList.remove("hidden");$("helpPanel").scrollIntoView({behavior:"smooth",block:"start"});}
+function closeHelp(){ $("helpPanel").classList.add("hidden");}
+["helpTop","faqHelp"].forEach(id=>$(id).addEventListener("click",openHelp));
+["closeHelp","helpBack"].forEach(id=>$(id).addEventListener("click",closeHelp));
+$("showToolkit").addEventListener("click",()=>{$("learn").scrollIntoView({behavior:"smooth",block:"start"});});
+$("begin").addEventListener("click",()=>{$("learn").scrollIntoView({behavior:"smooth",block:"start"});});
+$("launch").addEventListener("click",startGame);
+function startGame(){order=shuffle(questions.map((q,i)=>i));pos=0;xp=0;correct=0;history=[];answered=false;updateStats();$("results").classList.add("hidden");$("game").classList.remove("hidden");$("missionHub").classList.add("hidden");$("faq").classList.add("hidden");$("hero").classList.add("hidden");render();$("game").scrollIntoView({behavior:"smooth",block:"start"});}
+function render(){
+ const q=questions[order[pos]],z=Math.floor(pos/10);answered=false;
+ $("zoneLabel").textContent="ZONE 0"+(z+1);$("zoneTitle").textContent=["Rule Lab","Future Forecast","Grammar Detective"][z];
+ $("qNum").textContent=pos+1;$("progressBar").style.width=(pos/30*100)+"%";$("progress").setAttribute("aria-valuenow",pos);
+ $("formTag").textContent=q.f.toUpperCase();$("skillTag").textContent=q.s;$("qtext").textContent=q.q;
+ $("qinstruction").textContent="Choose the best answer. If you are unsure, ask for a hint or open the Help Centre.";
+ $("answers").innerHTML="";$("feedback").className="feedback";$("feedback").innerHTML="";$("nextBtn").classList.add("hidden");$("hintBtn").disabled=false;
+ $("hintBtn").textContent="💡 Give me a hint";
+ q.o.forEach((option,i)=>{const b=document.createElement("button");b.className="answer";b.textContent=String.fromCharCode(65+i)+". "+option;b.addEventListener("click",()=>choose(i));$("answers").appendChild(b);});
+ [0,1,2].forEach(i=>{$("zone"+i).classList.toggle("active",i===z);$("zone"+i).classList.toggle("done",i<z);});
+ $("sideMessage").textContent=["Zone 1: Learn to recognise facts, rules, and routines.","Zone 2: Predict possible future results and plans.","Zone 3: Combine both forms and solve the final cases."][z];
+}
+function choose(i){if(answered)return;answered=true;const q=questions[order[pos]],good=i===q.a;const buttons=[...$("answers").children];buttons.forEach((b,j)=>{b.disabled=true;if(j===q.a)b.classList.add("correct");if(j===i&&!good)b.classList.add("wrong");});
+ if(good){xp+=10;correct++}history.push({q:q.q,selected:q.o[i],answer:q.o[q.a],good});updateStats();
+ const f=$("feedback");f.classList.add("show",good?"good":"bad");
+ f.innerHTML="<strong>"+(good?"✓ Correct! You earned 10 XP.":"Not quite — mistakes help you learn.")+"</strong><div>"+q.e+"</div><div class='teach'><strong>Example:</strong> <em>"+q.ex+"</em></div>";
+ $("hintBtn").disabled=true;$("nextBtn").textContent=pos===29?"View mission report →":"Next challenge →";$("nextBtn").classList.remove("hidden");
+}
+$("hintBtn").addEventListener("click",()=>{const q=questions[order[pos]];$("hintBtn").textContent="💡 Hint: "+q.h;$("qinstruction").textContent=q.h;});
+$("nextBtn").addEventListener("click",()=>{if(!answered)return;pos++;updateStats();if(pos>=30){finish();return}render();$("game").scrollIntoView({behavior:"smooth",block:"start"});});
+function finish(){$("game").classList.add("hidden");$("results").classList.remove("hidden");$("finalXP").textContent=xp;$("resultStats").textContent="Correct answers: "+correct+" / 30 ("+Math.round(correct/30*100)+"%).";
+ let title,msg,awards=[];
+ if(correct>=27){title="Grammar Legend!";msg="Outstanding! You can distinguish the two conditional forms with confidence.";awards=["🏆 Grammar Legend","⚡ 270+ XP Club","🧠 Conditional Expert"]}
+ else if(correct>=21){title="Grammar Hero!";msg="Excellent progress! Review any tricky explanations to sharpen your skills.";awards=["🥇 Grammar Hero","✨ Smart Strategist"]}
+ else if(correct>=15){title="Mission Accomplished!";msg="Good work. Keep practising and revisit the grammar toolkit to strengthen your understanding.";awards=["🎯 Mission Finisher","🌟 Persistent Learner"]}
+ else{title="Training Complete!";msg="You completed the quest! Review the toolkit and explanations, then play again to build confidence.";awards=["🌱 Keep Growing","🧭 Brave Recruit"]}
+ $("resultTitle").textContent=title;$("resultMessage").textContent=msg;$("awards").innerHTML=awards.map(a=>"<span class='award'>"+a+"</span>").join("");$("missionHub").classList.remove("hidden");$("faq").classList.remove("hidden");$("playAgain").focus();$("results").scrollIntoView({behavior:"smooth",block:"center"});}
+$("playAgain").addEventListener("click",()=>{ $("results").classList.add("hidden");$("hero").classList.remove("hidden");$("missionHub").classList.remove("hidden");$("faq").classList.remove("hidden");$("learn").classList.remove("hidden");$("hero").scrollIntoView({behavior:"smooth"});});
+$("reviewBtn").addEventListener("click",()=>{$("results").classList.add("hidden");$("learn").scrollIntoView({behavior:"smooth"});});
+</script>
+</body>
+</html>
